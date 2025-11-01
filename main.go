@@ -39,7 +39,6 @@ func main() {
 
 	os.Chdir(workingDir)
 	fmt.Printf("Now current dir is: %s\n", workingDir)
-	// ~/workcode/libra/paladin-proto
 
 	// 检查 sourceDir
 	_, err = os.Stat(sourceDir)
@@ -70,9 +69,7 @@ func main() {
 	}
 
 	var fileNames []string = make([]string, 0)
-
-	// package: com.gf.libra.pricer.proto
-	const javaPackageName = "com.gf.libra.pricer.proto"
+	const javaPackageName = "com.hx.pricer.proto"
 
 	for _, file := range fileList {
 		var fileName string = file.Name()
@@ -115,7 +112,6 @@ func main() {
 			}
 
 			if isPackageField {
-				// fmt.Printf("package field, origin: %s; now: %s\n", lineStr, javaPackageName)
 				finalLine = fmt.Sprintf("package %s;", javaPackageName)
 				isPackageField = false
 			} else if strings.HasPrefix(lineTrim, "interface") {
